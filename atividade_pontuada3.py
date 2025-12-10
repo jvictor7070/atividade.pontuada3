@@ -1,7 +1,8 @@
 import os
 import time
+from dataclasses import dataclass
 
-
+@dataclass:
 class Reserva:
     def __init__(self, numero_aviao, nome_passageiro):
         self.numero_aviao = numero_aviao
@@ -146,3 +147,4 @@ while True:
         input("\nPressione Enter para continuar...")
 
         os.system("cls || clear")
+
