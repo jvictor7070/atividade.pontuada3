@@ -1,20 +1,19 @@
 import os
 import time
 
-# --- 1. Estrutura de Dados ---
 
 class Reserva:
     def __init__(self, numero_aviao, nome_passageiro):
         self.numero_aviao = numero_aviao
         self.nome_passageiro = nome_passageiro
 
-# Vetores globais (4 posições)
-lista_avioes = [None] * 4
+
+lista_avioes = [0] * 4
 lista_assentos = [0] * 4
-lista_reservas = [] # Armazena os objetos da classe Reserva
+lista_reservas = [] 
 MAX_RESERVAS = 10
 
-# --- 2. Funções do Sistema ---
+
 
 def registrar_avioes():
     print("\n--- Registro de Aviões ---")
@@ -24,7 +23,7 @@ def registrar_avioes():
 
 def registrar_assentos():
     print("\n--- Registro de Assentos ---")
-    # Verifica se os aviões já foram cadastrados (se o primeiro não é None)
+   
     if lista_avioes[0] is None:
         print("\nErro: É necessário cadastrar os aviões (Opção 1) primeiro.")
         return
@@ -55,17 +54,16 @@ def reservar_passagem():
 
     aviao_solicitado = input("Informe o número do avião: ")
 
-    # Verifica se avião existe
+
     if aviao_solicitado not in lista_avioes:
         print("\nEste avião não existe!")
     else:
-        # Pega o índice do avião para checar os assentos correspondentes
+       
         indice = lista_avioes.index(aviao_solicitado)
 
         if lista_assentos[indice] > 0:
             nome = input("Informe o nome do passageiro: ")
             
-            # Atualiza dados
             lista_assentos[indice] -= 1
             nova_reserva = Reserva(aviao_solicitado, nome)
             lista_reservas.append(nova_reserva)
@@ -143,7 +141,8 @@ while True:
         case _:
             print("\nOpção inválida.\nTente novamente.")
 
-    # Lógica de espera para leitura antes de limpar a tela (exceto ao sair)
+
     if opcao != 6:
-        input("\nPressione Enter para continuar...") # Pausa para ler o resultado
+        input("\nPressione Enter para continuar...")
+
         os.system("cls || clear")
